@@ -32,23 +32,6 @@ app.post('/adminService/isQueryExist', (req, res) => {
     }
 });
 
-app.post('/adminService/register', (req, res) => {
-    const name = req.body.name;
-    const surname = req.body.surname;
-    const email = req.body.email;
-    const pass = req.body.pass;
-
-    try {
-        db.query(queries.register, [name, surname, email, pass], (err, _) => {
-            if (err) throw err;
-    
-            res.sendStatus(200);
-        });
-    } catch(e) {
-        res.sendStatus(500);
-    }
-});
-
 app.post('/adminService/getCountQueries', (_, res) => {
     try {
         db.query(queries.getCountQueries, (err, result) => {
